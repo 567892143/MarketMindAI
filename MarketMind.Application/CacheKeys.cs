@@ -20,3 +20,9 @@ public static class CacheKeys
     public static string Snapshot(string symbol)
         => $"snapshot:{symbol.ToLower()}";
 }
+public static class QueueNames
+{
+    public const string NewsEmbedding   = "news-embedding";
+    public const string NewsSentiment   = "news-sentiment";
+    public const string BriefingTrigger = "briefing-trigger";
+}
