@@ -3,6 +3,8 @@ using MarketMind.API.Middleware;
 using MarketMind.Application;
 using MarketMind.Infrastructure;
 using Microsoft.OpenApi;
+using Hangfire;
+using MarketMind.Infrastructure.Jobs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -77,7 +79,17 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+
 app.UseCors("AllowAngular");
+app.UseHangfireDashboard("/hangfire", new DashboardOptions
+{
+    // Allow access without auth in development
+    Authorization = []
+});
+
+
+// Register all recurring jobs
+HangfireJobRegistration.RegisterRecurringJobs();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
