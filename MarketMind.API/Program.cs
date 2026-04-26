@@ -1,3 +1,4 @@
+using MarketMind.API.Hubs;
 using MarketMind.API.Middleware;
 using MarketMind.Application;
 using MarketMind.Infrastructure;
@@ -11,6 +12,29 @@ builder.Services.AddControllers();
 // Clean Architecture layers
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
+
+var azureSignalRConnection = builder.Configuration["AzureSignalR:ConnectionString"];
+
+if (!string.IsNullOrWhiteSpace(azureSignalRConnection) &&
+    !azureSignalRConnection.Contains("placeholder"))
+{
+    // Production — Azure SignalR Service
+    builder.Services.AddSignalR()
+        .AddAzureSignalR(azureSignalRConnection);
+}
+else
+{
+    // Development — local SignalR (no Azure needed)
+    builder.Services.AddSignalR(options =>
+    {
+        options.EnableDetailedErrors = true; // helpful during development
+        options.KeepAliveInterval    = TimeSpan.FromSeconds(15);
+        options.ClientTimeoutInterval = TimeSpan.FromSeconds(30);
+    });
+}
+
+builder.Services.AddHostedService<MarketPriceBackgroundService>();
+builder.Services.AddHostedService<BriefingNotificationService>();
 
 // Swagger
 builder.Services.AddEndpointsApiExplorer();
@@ -57,5 +81,7 @@ app.UseCors("AllowAngular");
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
+
+app.MapHub<MarketHub>("/hubs/market");
 
 app.Run();
