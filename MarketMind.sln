@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarketMind.Domain", "MarketMind.Domain\MarketMind.Domain.csproj", "{F08E1A12-2356-44A9-BA86-A66657EB2F37}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarketMind.Application", "MarketMind.Application\MarketMind.Application.csproj", "{CF8C81C0-5DB8-4F89-86B2-D1812EA5FBB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarketMind.Infrastructure", "MarketMind.Infrastructure\MarketMind.Infrastructure.csproj", "{DAC2F095-D790-4740-9A33-5A3E8C5BCCB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarketMind.API", "MarketMind.API\MarketMind.API.csproj", "{D589E572-EC86-44A8-8977-2CAE6CA48D81}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F08E1A12-2356-44A9-BA86-A66657EB2F37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F08E1A12-2356-44A9-BA86-A66657EB2F37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F08E1A12-2356-44A9-BA86-A66657EB2F37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F08E1A12-2356-44A9-BA86-A66657EB2F37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF8C81C0-5DB8-4F89-86B2-D1812EA5FBB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF8C81C0-5DB8-4F89-86B2-D1812EA5FBB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF8C81C0-5DB8-4F89-86B2-D1812EA5FBB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF8C81C0-5DB8-4F89-86B2-D1812EA5FBB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAC2F095-D790-4740-9A33-5A3E8C5BCCB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAC2F095-D790-4740-9A33-5A3E8C5BCCB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAC2F095-D790-4740-9A33-5A3E8C5BCCB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAC2F095-D790-4740-9A33-5A3E8C5BCCB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D589E572-EC86-44A8-8977-2CAE6CA48D81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D589E572-EC86-44A8-8977-2CAE6CA48D81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D589E572-EC86-44A8-8977-2CAE6CA48D81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D589E572-EC86-44A8-8977-2CAE6CA48D81}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

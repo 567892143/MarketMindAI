@@ -1,0 +1,40 @@
+# Build outputs
+bin/
+obj/
+
+# Visual Studio / VS Code
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Environment & secrets — NEVER commit these
+appsettings.Development.json
+appsettings.json
+appsettings.Production.json
+*.env
+.env
+
+# EF Core migrations can be committed — remove this if you want
+# Migrations/
+
+# Rider
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# NuGet
+.nuget/
+packages/
+
+# Test results
+TestResults/
+coverage/
