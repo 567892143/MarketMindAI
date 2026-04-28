@@ -8,6 +8,7 @@ public class IngestNewsUseCase(
     INewsIngestionService newsApi,
     INewsRepository newsRepo,
     IMessagePublisher publisher,
+     IJobClient   jobClient,
     ILogger<IngestNewsUseCase> logger)
 {
     // Targeted queries — designed to stay within NewsAPI free tier (100/day)
@@ -54,13 +55,6 @@ public class IngestNewsUseCase(
                     await newsRepo.SaveAsync(article, ct);
                     saved++;
 
-                    // Publish to Service Bus for async embedding
-                    // Decoupled — embedding happens independently
-                    await publisher.PublishAsync(
-                        "news-embedding",
-                        new { ArticleId = article.Id },
-                        ct);
-                    queued++;
                 }
             }
             catch (Exception ex)
@@ -74,6 +68,14 @@ public class IngestNewsUseCase(
         logger.LogInformation(
             "News ingestion complete. Saved: {Saved}, Skipped: {Skipped}, Queued: {Queued}",
             saved, skipped, queued);
+
+        if (saved > 0)
+        {
+            jobClient.TriggerEmbeddingJob();
+            logger.LogInformation(
+            "[Ingest] Embedding job triggered for {Count} new articles",
+            saved);
+        }
 
         return new IngestNewsResult(saved, skipped, queued);
     }

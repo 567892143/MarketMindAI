@@ -35,19 +35,16 @@ public class NewsArticleConfiguration
             .HasConversion<string>()
             .HasMaxLength(20);
 
-          var embeddingConverter = new ValueConverter<float[]?, Vector?>(
-    v => v == null ? null : new Vector(v),
-    v => v == null ? null : v.ToArray());
-
-var embeddingComparer = new ValueComparer<float[]?>(
-    (a, b) => a != null && b != null && a.SequenceEqual(b),
-    v => v == null ? 0 : v.Aggregate(0, HashCode.Combine),
-    v => v == null ? null : v.ToArray());
-
-builder.Property(a => a.Embedding)
-    .HasColumnType("vector(768)")
-    .HasConversion(embeddingConverter, embeddingComparer)
-    .IsRequired(false);
+        builder.Property(a => a.Embedding)
+  .HasColumnType("vector(768)")
+  .HasConversion(
+      v => v == null ? null : new Vector(v),
+      v => v == null ? null : v.ToArray(),
+      new ValueComparer<float[]?>(
+          (a, b) => a != null && b != null && a.SequenceEqual(b),
+          v => v == null ? 0 : v.Aggregate(0, HashCode.Combine),
+          v => v == null ? null : v.ToArray()))
+  .IsRequired(false);
 
         builder.Property(a => a.AffectedSectors)
             .HasColumnType("text[]");

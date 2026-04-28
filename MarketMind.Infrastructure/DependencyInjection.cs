@@ -82,10 +82,14 @@ public static class DependencyInjection
 
 
         // ── Still stubbed — replaced in later phases ───────────────
-        services.AddScoped<IAIOrchestrator, StubAIOrchestrator>();
-        services.AddScoped<IVectorSearchService, StubVectorSearchService>();
+        // services.AddScoped<IAIOrchestrator, StubAIOrchestrator>();
+        // services.AddScoped<IVectorSearchService, StubVectorSearchService>();
         services.AddScoped<IMessagePublisher, StubMessagePublisher>();
         services.AddScoped<IFoDataService, StubFoDataService>();
+
+        services.AddScoped<IAIOrchestrator,      GeminiOrchestrator>();
+        services.AddScoped<IVectorSearchService, VectorSearchService>();
+        services.AddScoped<IJobClient, HangfireJobClient>();
 
         services.AddScoped<MorningBriefingJob>();
         services.AddScoped<NewsIngestionJob>();

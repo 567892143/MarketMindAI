@@ -68,6 +68,7 @@ var app = builder.Build();
 
 // Global exception handler — first in pipeline
 app.UseMiddleware<GlobalExceptionMiddleware>();
+app.UseMiddleware<RateLimitingMiddleware>();
 
 if (app.Environment.IsDevelopment())
 {
