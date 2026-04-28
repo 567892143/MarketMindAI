@@ -95,6 +95,7 @@ public static class DependencyInjection
         services.AddScoped<NewsIngestionJob>();
         services.AddScoped<WhyMarketMovedJob>();
         services.AddScoped<SectorSentimentJob>();
+        services.AddScoped<ArticleEmbeddingJob>();
 
         return services;
     }
