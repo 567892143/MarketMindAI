@@ -1,0 +1,11 @@
+**/bin/
+**/obj/
+**/.vs/
+**/.vscode/
+**/node_modules/
+MarketMind.Angular/
+appsettings.Development.json
+appsettings.Production.json
+*.md
+.git/
+.gitignore
